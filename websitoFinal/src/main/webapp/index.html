@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mis Mascotas</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                 background-image:url('https://th.bing.com/th/id/R.7d13273c569ee8a6a7316443ef61c8c8?rik=oaDbdv%2fYjnrF5w&riu=http%3a%2f%2fwww.fondox.net%2fwallpapers%2fresoluciones%2f13%2fun-perro-y-un-gato_1366x768_1398.jpg&ehk=C56Y7%2fwswon1VQTHYftHnGWcakTyUwDvwmIEdauEWQE%3d&risl=&pid=ImgRaw&r=0')
+            }
+
+            header {
+                background-color: #f7a96d;
+                padding: 10px;
+                text-align: center;
+            }
+
+            h1 {
+                color: white;
+                font-size: 36px;
+                margin: 0;
+            }
+
+            h3 {
+                color: white;
+                font-size: 36px;
+                margin: 0;
+            }
+
+            form {
+                background-color: #e8e8e8;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin: 20px auto;
+                padding: 20px;
+                width: 400px;
+            }
+
+            form label {
+                display: block;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            form input[type="text"],
+            form input[type="number"] {
+                font-size: 16px;
+                padding: 5px;
+                width: 100%;
+            }
+
+            form select {
+                font-size: 16px;
+                padding: 5px;
+                width: 100%;
+            }
+
+            form input[type="submit"] {
+                background-color: #f7a96d;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 10px;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                width: 600px;
+            }
+
+            table th,
+            table td {
+                border: 1px solid #ccc;
+                padding: 10px;
+                text-align: center;
+            }
+
+            table th {
+                background-color: #f7a96d;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            .success {
+                background-color: #d4edda;
+                color: #155724;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #c3e6cb;
+                border-radius: 5px;
+            }
+
+            .error {
+                background-color: #f8d7da;
+                color: #721c24;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>RESCATE DE MASCOTAS</h1>
+        </header>
+
+        <form method="post" action="MascotasServlet">
+            <label for="tipo">Tipo de mascota:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="opc">Seleccione una opción</option>
+                <option value="canino">Canino</option>
+                <option value="felino">Felino</option>
+            </select>
+            <br>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
+            <br>
+            <label for="raza">Raza:</label>
+            <input type="text" name="raza" id="raza" required>
+            <br>
+            <label for="color">Color:</label>
+            <input type="text" name="color" id="color" required>
+            <br>
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" required>
+            <br>
+
+            <div id="toxoplasmosis" style="display:none;">
+                <label for="libreDeToxoplasmosis">Libre de Toxoplasmosis:</label>
+                <select name="libreDeToxoplasmosis" id="libreDeToxoplasmosis">
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div id="nivelEntrenamiento" style="display:none;">
+                <label for="nivelEntrenamiento">Nivel de Entrenamiento:</label>
+                <input type="number" name="nivelEntrenamiento" id="nivelEntrenamiento" min="1" max="10">
+            </div>
+
+            <br>
+            <input type="submit" value="Agregar">
+        </form>
+        <script>
+     
+            var tipoSelect = document.getElementById("tipo");
+            var toxoplasmosisDiv = document.getElementById("toxoplasmosis");
+            tipoSelect.addEventListener("change", function () {
+                if (tipoSelect.value === "felino") {
+                    toxoplasmosisDiv.style.display = "block";
+                } else {
+                    toxoplasmosisDiv.style.display = "none";
+                }
+            });
+
+            var nivelEntrenamientoDiv = document.getElementById("nivelEntrenamiento");
+            tipoSelect.addEventListener("change", function () {
+                if (tipoSelect.value === "canino") {
+                    nivelEntrenamientoDiv.style.display = "block";
+                } else {
+                    nivelEntrenamientoDiv.style.display = "none";
+                }
+            });
+        </script>
+
+    </body>
+</html>
